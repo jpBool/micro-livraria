@@ -1,3 +1,4 @@
+
 const express = require('express');
 const shipping = require('./shipping');
 const inventory = require('./inventory');
@@ -59,7 +60,7 @@ app.get('/product/:id', (req, res, next) => {
         } else {
             // Caso contrário, retorna resultado do
             // microsserviço (um arquivo JSON) com os dados
-            // do produto pesquisado
+            // do produto pesquisadoS
             res.json(product);
         }
     });

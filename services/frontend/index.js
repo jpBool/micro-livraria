@@ -88,3 +88,29 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error(err);
         });
 });
+
+document.getElementById('actionButton').addEventListener('click', function() {
+    // Get current value
+    var value = document.getElementById('myNumber').value;
+        
+    // Define base URL
+    var baseUrl = "http://localhost:3000/product/";
+        
+    // Redirect to new URL with value
+    //window.location.href = baseUrl + value;
+    fetch(baseUrl + value)
+        .then((data) => {
+            if (data.ok) {
+                return data.json();
+            }
+            throw alert("Livro nao encontrado");
+        })
+        .then((data) => {
+            if (data) {
+                const ls = document.querySelector('.books')
+                ls.innerHTML = "";
+                ls.appendChild(newBook(data));
+            }
+        })
+        
+});
